@@ -28,9 +28,11 @@ img, video, iframe {
 }
 
 header {
-    max-width: 80%;
+    max-width: 100%;
+    max-height: 500px;
+    min-height: 500px;
     margin: 0 auto;
-    background-image: url(/assets/img/bg.jpg);
+    background-image: url(/assets/img/TDDWorkshopBackground.jpg);
     background-size: cover;
     color: rgba(255, 255, 255, .75);
 }
@@ -47,8 +49,10 @@ header {
 }
 
 .site-description {
-    font-family: "League Gothic", "Arial Narrow", Arial, sans-serif;
-    text-align: center;
+    /* font-family: "League Gothic", "Arial Narrow", Arial, sans-serif; */
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    font-size: 1rem;
+    text-align: center;    
 }
 
 
