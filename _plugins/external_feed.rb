@@ -1,5 +1,6 @@
 require 'rss'
 require 'open-uri'
+require 'date'
 
 module Jekyll
   class ExternalPostDisplay < Generator
@@ -12,21 +13,21 @@ module Jekyll
       url = "https://blogs.sourceallies.com/author/cwilliams/feed"
 
         open(url) do |rss|
-            # puts rss
             feed = RSS::Parser.parse(rss)
-            puts "#{feed}"
-            puts "Title: #{feed.channel.title}"
             feed.items.each do |item|
-                puts "Item: #{item.title}"
-                p "Title: #{item.title}, published on Source Allies Blog #{item.link} #{item}"
                 title = item.title
-                content = item.description
-                guid = item.link
+                desc = item.description
+                link = item.link
+                pubdate = item.pubDate
+                newdate = Date.parse(pubdate.to_s).strftime("%B %d, %Y")
                 path = "./_external_feed/" + title + ".md"
                 path = site.in_source_dir(path)
                 doc = Jekyll::Document.new(path, { :site => site, :collection => jekyll_coll })
-                doc.data['title'] = title;
-                doc.data['feed_content'] = content;
+                doc.data['title'] = title
+                doc.data['blog'] = "Source Allies Blog"
+                doc.data['desc'] = desc
+                doc.data['link'] = link
+                doc.data['date'] = newdate
                 jekyll_coll.docs << doc
             end
         end

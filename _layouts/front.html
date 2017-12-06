@@ -45,8 +45,9 @@ layout: default
 <div>
         <section>
                 {% for e in site.external_feed %}
-                  <h2>{{ e.title }}</h2>
-                  <p>{{ e.feed_content }}</p>
+                  <h2><a href="{{ e.link }}">{{e.title}}</a></h2>
+                  <p>Published on {{e.date}} for {{e.blog}}</p>
+                  <p> {{e.desc}}</p>
                 {% endfor %}
               </section>
 </div>
