@@ -4,6 +4,9 @@ layout: default
 
 <!-- one, two and then four card rows -->
 <div class="ui centered grid stackable">
+    <div class="ui horizontal divider">
+        Featured Posts
+    </div>    
     {% assign counter = 0 %}
     {% for post in site.posts %}
         {% assign counter = counter | plus: 1 %}
@@ -22,7 +25,7 @@ layout: default
         {% else %}
             {% if counter == 11 %}
                 <div class="ui horizontal divider">
-                    Older Posts
+                    Other Posts
                 </div>
             {% endif %}
             <div class="sixteen wide column">
@@ -38,6 +41,14 @@ layout: default
             </div>
         {% endif %}
     {% endfor %}
+</div>
+<div>
+        <section>
+                {% for e in site.external_feed %}
+                  <h2>{{ e.title }}</h2>
+                  <p>{{ e.feed_content }}</p>
+                {% endfor %}
+              </section>
 </div>
 <div class="ui divider"></div>
 
