@@ -44,6 +44,13 @@ layout: default
 </div>
 <div>
         <section>
+                {% for e in site.featured_feed %}
+                    <h2><a href="{{ e.link }}">{{e.title}}</a></h2>
+                    <p>Published on {{e.date}} for {{e.blog}}</p>
+                    <p> {{e.desc}}</p>
+                {% endfor %}
+        </section>
+        <section>
             {% for e in site.sai_feed %}
                 <h2><a href="{{ e.link }}">{{e.title}}</a></h2>
                 <p>Published on {{e.date}} for {{e.blog}}</p>
