@@ -12,3 +12,6 @@ permalink: /:year/:month/:title.html
 collections:
   external_feed:
     output: true
+
+plugins:
+  - jekyll-gist
