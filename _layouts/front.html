@@ -2,70 +2,65 @@
 layout: default
 ---
 
-<!-- one, two and then four card rows -->
 <div class="ui centered grid stackable">
+  
+    <div class="eight wide column">
+            <div class="ui horizontal divider">
+                Featured Posts
+            </div>  
+            <section>
+                    {% for e in site.featured_feed %}
+                        <h2><a href="{{ e.link }}">{{e.title}}</a></h2>
+                        <p>Published on {{e.date}} for {{e.blog}}</p>
+                        <p> {{e.desc}}</p>
+                    {% endfor %}
+            </section>
+    </div>
+    <div class="eight wide column">
+            <div style="text-align:center;">
+                <a class="twitter-follow-button"
+                    href="https://twitter.com/CecilGWilliams"
+                    data-size="large"
+                    data-show-count="false">Follow @CecilGWilliams
+                </a>
+                <p>
+                    <a class="twitter-timeline" data-width="250" data-height="500" data-theme="light" href="https://twitter.com/CecilGWilliams?ref_src=twsrc%5Etfw">Tweets by CecilGWilliams</a> 
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </p>
+            </div>          
+    </div>
     <div class="ui horizontal divider">
-        Featured Posts
-    </div>    
-    {% assign counter = 0 %}
-    {% for post in site.posts %}
-        {% assign counter = counter | plus: 1 %}
-        {% if counter == 1 %}
-            <div class="eight wide column">
-                {% include card.html %}
-            </div>
-        {% elsif counter == 2 %}
-            <div class="eight wide column">
-                {% include card.html %}
-            </div>
-        {% elsif counter <= 10 %}
-            <div class="four wide column">
-                {% include card.html %}
-            </div>
-        {% else %}
-            {% if counter == 11 %}
-                <div class="ui horizontal divider">
-                    Other Posts
-                </div>
-            {% endif %}
-            <div class="sixteen wide column">
-                <div class="ui middle aligned selection list">
-                    <div class="item">
-                        <div class="header">
-                            {{ post.title | strip_html | truncatewords: 15 }}
-                            <small class="small-date">{{ post.date | date_to_string }}</small>
-                        </div>
-                        {{ post.content | strip_html | truncatewords: 30 }}
+            Other Posts
+    </div>
+    <div class="sixteen wide column">
+        <div class="ui middle aligned selection list">
+            {% assign counter = 0 %}
+            {% for post in site.posts %}
+                <div class="item">
+                    <div class="header">
+                        {{ post.title | strip_html | truncatewords: 20 }}
+                        <small class="small-date">{{ post.date | date_to_string }}</small>
                     </div>
+                    {{ post.content | strip_html | truncatewords: 50 }}
                 </div>
-            </div>
-        {% endif %}
-    {% endfor %}
-</div>
-<div>
-        <section>
-                {% for e in site.featured_feed %}
-                    <h2><a href="{{ e.link }}">{{e.title}}</a></h2>
+             {% endfor %}
+
+            <section>
+                {% for e in site.sai_feed %}
+                    <h3><a href="{{ e.link }}">{{e.title}}</a></h3>
                     <p>Published on {{e.date}} for {{e.blog}}</p>
                     <p> {{e.desc}}</p>
                 {% endfor %}
-        </section>
-        <section>
-            {% for e in site.sai_feed %}
-                <h2><a href="{{ e.link }}">{{e.title}}</a></h2>
-                <p>Published on {{e.date}} for {{e.blog}}</p>
-                <p> {{e.desc}}</p>
-            {% endfor %}
-        </section>
-        <section>
-            {% for e in site.cgw_feed %}
-                <h2><a href="{{ e.link }}">{{e.title}}</a></h2>
-                <p>Published on {{e.date}} for {{e.blog}}</p>
-                <p> {{e.desc}}</p>
-            {% endfor %}
-        </section>
-    
-</div>
-<div class="ui divider"></div>
+            </section>
 
-{% include disqus-count.html %}
+            <section>
+                {% for e in site.cgw_feed %}
+                    <h3><a href="{{ e.link }}">{{e.title}}</a></h3>
+                    <p>Published on {{e.date}} for {{e.blog}}</p>
+                    <p> {{e.desc}}</p>
+                {% endfor %}
+            </section>
+        </div>
+    </div>
+
+</div>
