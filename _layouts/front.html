@@ -29,38 +29,4 @@ layout: default
                 </p>
             </div>          
     </div>
-    <div class="ui horizontal divider">
-            Other Posts
-    </div>
-    <div class="sixteen wide column">
-        <div class="ui middle aligned selection list">
-            {% assign counter = 0 %}
-            {% for post in site.posts %}
-                <div class="item">
-                    <div class="header">
-                        {{ post.title | strip_html | truncatewords: 20 }}
-                        <small class="small-date">{{ post.date | date_to_string }}</small>
-                    </div>
-                    {{ post.content | strip_html | truncatewords: 50 }}
-                </div>
-             {% endfor %}
-
-            <section>
-                {% for e in site.sai_feed %}
-                    <h3><a href="{{ e.link }}">{{e.title}}</a></h3>
-                    <p>Published on {{e.date}} for {{e.blog}}</p>
-                    <p> {{e.desc}}</p>
-                {% endfor %}
-            </section>
-
-            <section>
-                {% for e in site.cgw_feed %}
-                    <h3><a href="{{ e.link }}">{{e.title}}</a></h3>
-                    <p>Published on {{e.date}} for {{e.blog}}</p>
-                    <p> {{e.desc}}</p>
-                {% endfor %}
-            </section>
-        </div>
-    </div>
-
 </div>
